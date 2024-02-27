@@ -21,44 +21,6 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 
 public class SwerveModule {
-    public static double degreeChangeClosest(double targetDegree, double currentAngle){
-        //Possitive is clockwise negative is anti-clockwise
-        double degreeDifference = targetDegree - currentAngle;
-
-        if (degreeDifference == 0){
-            return 0;
-        }
-
-        if (degreeDifference <= 180 && degreeDifference >= -180){
-            return degreeDifference;
-        } else {
-            if (degreeDifference > 180){
-                return (degreeDifference - 180) * -1;
-            } else{
-                return (degreeDifference + 180) * -1;
-            }
-        }
-    }
-
-    public static int degreeChangeClosest(int targetDegree, int currentAngle){
-        //Possitive is clockwise negative is anti-clockwise
-        int degreeDifference = targetDegree - currentAngle;
-
-        if (degreeDifference == 0){
-            return 0;
-        }
-
-        if (degreeDifference <= 180 && degreeDifference >= -180){
-            return degreeDifference;
-        } else {
-            if (degreeDifference > 180){
-                return (degreeDifference - 180) * -1;
-            } else{
-                return (degreeDifference + 180) * -1;
-            }
-        }
-    }
-
     private static final double kWheelRadius = 0.0508;//NEED TO FIND
     private static final int kEncoderResolution = 4096;//NEED TO FIND
 
