@@ -1,3 +1,5 @@
+package frc.robot;
+
 public class Functions{
     public static double degreeChangeClosest(double targetDegree, double currentAngle){
         //Positive is clockwise negative is anti-clockwise
