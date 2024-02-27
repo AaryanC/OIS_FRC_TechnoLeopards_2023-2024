@@ -4,10 +4,6 @@
  * Anything marked with "//NEED TO LEARN WHAT THIS ENTIRE FUNCTION DOES" needs to be understood and improved upon
  */
 
-//CODE TO POTENTIALLY IMPLIMENT
-
-//FOR DEGREE CHANGE
-
 package frc.robot.subsystems;
 
 import edu.wpi.first.math.controller.PIDController;
@@ -47,35 +43,33 @@ public class SwerveModule {
     int driveEncoderChannelB, 
     int turningEncoderChannelA, 
     int turningEncoderChannelB){
-    m_driveMotor = new PWMSparkMax(driveMotorChannel);
-    m_turningMotor = new PWMSparkMax(turningMotorChannel);
+        m_driveMotor = new PWMSparkMax(driveMotorChannel);
+        m_turningMotor = new PWMSparkMax(turningMotorChannel);
     
-    m_driveEncoder = new Encoder(driveEncoderChannelA, driveEncoderChannelB);
-    m_turningEncoder = new Encoder(turningEncoderChannelA, turningEncoderChannelB);
+        m_driveEncoder = new Encoder(driveEncoderChannelA, driveEncoderChannelB);
+        m_turningEncoder = new Encoder(turningEncoderChannelA, turningEncoderChannelB);
     
         // Set the distance per pulse for the drive encoder. We can simply use the
         // distance traveled for one rotation of the wheel divided by the encoder
         // resolution.
-    m_driveEncoder.setDistancePerPulse(2 * Math.PI * kWheelRadius / kEncoderResolution);
+        m_driveEncoder.setDistancePerPulse(2 * Math.PI * kWheelRadius / kEncoderResolution);
     
         // Set the distance (in this case, angle) in radians per pulse for the turning encoder.
         // This is the the angle through an entire rotation (2 * pi) divided by the
         // encoder resolution.
-    m_turningEncoder.setDistancePerPulse(2 * Math.PI / kEncoderResolution);
+        m_turningEncoder.setDistancePerPulse(2 * Math.PI / kEncoderResolution);
     
         // Limit the PID Controller's input range between -pi and pi and set the input
         // to be continuous.
-    m_turningPIDController.enableContinuousInput(-Math.PI, Math.PI);
+        m_turningPIDController.enableContinuousInput(-Math.PI, Math.PI);
     }
 
     public SwerveModuleState getState() { //NEED TO LEARN WHAT THIS ENTIRE FUNCTION DOES
-        return new SwerveModuleState(
-            m_driveEncoder.getRate(), new Rotation2d(m_turningEncoder.getDistance()));
+        return new SwerveModuleState(m_driveEncoder.getRate(), new Rotation2d(m_turningEncoder.getDistance()));
     }
 
     public SwerveModulePosition getPosition() { //NEED TO LEARN WHAT THIS ENTIRE FUNCTION DOES
-        return new SwerveModulePosition(
-            m_driveEncoder.getDistance(), new Rotation2d(m_turningEncoder.getDistance()));
+        return new SwerveModulePosition(m_driveEncoder.getDistance(), new Rotation2d(m_turningEncoder.getDistance()));
     }
 
     public void setDesiredState(SwerveModuleState desiredState) { //NEED TO LEARN WHAT THIS ENTIRE FUNCTION DOES
@@ -90,17 +84,14 @@ public class SwerveModule {
         state.speedMetersPerSecond *= state.angle.minus(encoderRotation).getCos();
     
         // Calculate the drive output from the drive PID controller.
-        final double driveOutput =
-            m_drivePIDController.calculate(m_driveEncoder.getRate(), state.speedMetersPerSecond);
+        final double driveOutput = m_drivePIDController.calculate(m_driveEncoder.getRate(), state.speedMetersPerSecond);
     
         final double driveFeedforward = m_driveFeedforward.calculate(state.speedMetersPerSecond);
     
         // Calculate the turning motor output from the turning PID controller.
-        final double turnOutput =
-            m_turningPIDController.calculate(m_turningEncoder.getDistance(), state.angle.getRadians());
+        final double turnOutput = m_turningPIDController.calculate(m_turningEncoder.getDistance(), state.angle.getRadians());
     
-        final double turnFeedforward =
-            m_turnFeedforward.calculate(m_turningPIDController.getSetpoint().velocity);
+        final double turnFeedforward = m_turnFeedforward.calculate(m_turningPIDController.getSetpoint().velocity);
     
         m_driveMotor.setVoltage(driveOutput + driveFeedforward);
         m_turningMotor.setVoltage(turnOutput + turnFeedforward);
