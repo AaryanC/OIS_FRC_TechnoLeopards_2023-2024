@@ -8,23 +8,25 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.ProfiledPIDController;
-import edu.wpi.first.math.controller.SimpleMotorFeedforward;
+import edu.wpi.first.math.controller.SimpleMotorFeedforward; 
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
+
+import com.revrobotics.CANSparkLowLevel;
+import com.revrobotics.CANSparkMax;
 
 public class SwerveModule {
     private static final double kWheelRadius = 0.0508;//NEED TO FIND
-    private static final int kEncoderResolution = 4096;//NEED TO FIND
+    private static final int kEncoderResolution = 4096;//NEED TO FIND //NEED TO LEARN WHAT THIS ENTIRE FUNCTION DOES
 
     private static final double kModuleMaxAngularVelocity = Math.PI;
     private static final double kModuleMaxAngularAcceleration = 2 * Math.PI;
 
-    private final PWMSparkMax m_driveMotor;
-    private final PWMSparkMax m_turningMotor;
+    private final CANSparkMax m_driveMotor;
+    private final CANSparkMax m_turningMotor;
 
     private final Encoder m_driveEncoder;
     private final Encoder m_turningEncoder;
@@ -37,14 +39,16 @@ public class SwerveModule {
     private final SimpleMotorFeedforward m_driveFeedforward = new SimpleMotorFeedforward(1, 3);//NEED TO FIND
     private final SimpleMotorFeedforward m_turnFeedforward = new SimpleMotorFeedforward(1, 0.5);//NEED TO FIND
 
-    public SwerveModule(int driveMotorChannel, //NEED TO LEARN WHAT THIS ENTIRE FUNCTION DOES
-    int turningMotorChannel, 
+    public SwerveModule(int driveDeviceId, //NEED TO LEARN WHAT THIS ENTIRE FUNCTION DOES
+    int turningDeviceId, 
+    CANSparkLowLevel.MotorType driveMotorType,
+    CANSparkLowLevel.MotorType turningMotorType,
     int driveEncoderChannelA, 
     int driveEncoderChannelB, 
     int turningEncoderChannelA, 
     int turningEncoderChannelB){
-        m_driveMotor = new PWMSparkMax(driveMotorChannel);
-        m_turningMotor = new PWMSparkMax(turningMotorChannel);
+        m_driveMotor = new CANSparkMax(driveDeviceId, driveMotorType);
+        m_turningMotor = new CANSparkMax(turningDeviceId, turningMotorType);
     
         m_driveEncoder = new Encoder(driveEncoderChannelA, driveEncoderChannelB);
         m_turningEncoder = new Encoder(turningEncoderChannelA, turningEncoderChannelB);
