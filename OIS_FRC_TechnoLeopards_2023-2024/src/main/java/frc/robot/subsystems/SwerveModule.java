@@ -20,10 +20,11 @@ import com.revrobotics.CANSparkMax;
 
 public class SwerveModule {
     private static final double kWheelRadius = 0.0508;//NEED TO FIND
-    private static final int kEncoderResolution = 4096;//NEED TO FIND
     /*
     * kEncoderResolution like ADS, higher resolution = more precision but lower speed and lower resolution = less precision but higher speed
     */
+    private int kEncoderResolutionDrive = 4096;//NEED TO FIND
+    private int kEncoderResolutionTurn = 4096;//NEED TO FIND
 
     private static final double kModuleMaxAngularVelocity = Math.PI;
     private static final double kModuleMaxAngularAcceleration = 2 * Math.PI;
@@ -59,16 +60,55 @@ public class SwerveModule {
         // Set the distance per pulse for the drive encoder. We can simply use the
         // distance traveled for one rotation of the wheel divided by the encoder
         // resolution.
-        m_driveEncoder.setDistancePerPulse(2 * Math.PI * kWheelRadius / kEncoderResolution);
+        m_driveEncoder.setDistancePerPulse(2 * Math.PI * kWheelRadius / kEncoderResolutionDrive);
     
         // Set the distance (in this case, angle) in radians per pulse for the turning encoder.
         // This is the the angle through an entire rotation (2 * pi) divided by the
         // encoder resolution.
-        m_turningEncoder.setDistancePerPulse(2 * Math.PI / kEncoderResolution);
+        m_turningEncoder.setDistancePerPulse(2 * Math.PI / kEncoderResolutionTurn);
     
         // Limit the PID Controller's input range between -pi and pi and set the input
         // to be continuous.
         m_turningPIDController.enableContinuousInput(-Math.PI, Math.PI);
+    }
+
+    //Allows for switch between prioritizing accuracy and prioritizing speed
+    public void updateEncoderResolution(int newEncoderResolution){
+        kEncoderResolutionDrive = newEncoderResolution;
+        kEncoderResolutionTurn = newEncoderResolution;
+
+        // Set the distance per pulse for the drive encoder. We can simply use the
+        // distance traveled for one rotation of the wheel divided by the encoder
+        // resolution.
+        m_driveEncoder.setDistancePerPulse(2 * Math.PI * kWheelRadius / kEncoderResolutionDrive);
+    
+        // Set the distance (in this case, angle) in radians per pulse for the turning encoder.
+        // This is the the angle through an entire rotation (2 * pi) divided by the
+        // encoder resolution.
+        m_turningEncoder.setDistancePerPulse(2 * Math.PI / kEncoderResolutionTurn);
+    }
+
+    public void updateEncoderResolution(int newDriveEncoderResolution, int newTurnEncoderResolution){
+        kEncoderResolutionDrive = newDriveEncoderResolution;
+        kEncoderResolutionTurn = newTurnEncoderResolution;
+
+        // Set the distance per pulse for the drive encoder. We can simply use the
+        // distance traveled for one rotation of the wheel divided by the encoder
+        // resolution.
+        m_driveEncoder.setDistancePerPulse(2 * Math.PI * kWheelRadius / kEncoderResolutionDrive);
+    
+        // Set the distance (in this case, angle) in radians per pulse for the turning encoder.
+        // This is the the angle through an entire rotation (2 * pi) divided by the
+        // encoder resolution.
+        m_turningEncoder.setDistancePerPulse(2 * Math.PI / kEncoderResolutionTurn);
+    }
+
+    public int getDriveEncoderResolution(){
+        return kEncoderResolutionDrive;
+    }
+
+    public int getTurnEncoderResolution(){
+        return kEncoderResolutionTurn;
     }
 
     public SwerveModuleState getState() { //NEED TO LEARN WHAT THIS ENTIRE FUNCTION DOES
