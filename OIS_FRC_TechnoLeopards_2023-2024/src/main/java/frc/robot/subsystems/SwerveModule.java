@@ -43,7 +43,7 @@ public class SwerveModule {
     private final SimpleMotorFeedforward m_driveFeedforward = new SimpleMotorFeedforward(1, 3);//NEED TO FIND
     private final SimpleMotorFeedforward m_turnFeedforward = new SimpleMotorFeedforward(1, 0.5);//NEED TO FIND
 
-    public SwerveModule(int driveDeviceId, //NEED TO LEARN WHAT THIS ENTIRE FUNCTION DOES
+    public SwerveModule(int driveDeviceId,
     int turningDeviceId, 
     CANSparkLowLevel.MotorType driveMotorType,
     CANSparkLowLevel.MotorType turningMotorType,
@@ -51,24 +51,21 @@ public class SwerveModule {
     int driveEncoderChannelB, 
     int turningEncoderChannelA, 
     int turningEncoderChannelB){
+        //Creates the CANSparkMax objects with the device id for the motor and the motor type
         m_driveMotor = new CANSparkMax(driveDeviceId, driveMotorType);
         m_turningMotor = new CANSparkMax(turningDeviceId, turningMotorType);
     
+        //Creates the encoders and sets the two channels
         m_driveEncoder = new Encoder(driveEncoderChannelA, driveEncoderChannelB);
         m_turningEncoder = new Encoder(turningEncoderChannelA, turningEncoderChannelB);
-    
-        // Set the distance per pulse for the drive encoder. We can simply use the
-        // distance traveled for one rotation of the wheel divided by the encoder
-        // resolution.
+
+        //Sets the distance per pulse to the circumference of the wheel divided by the drive encoder resolution
         m_driveEncoder.setDistancePerPulse(2 * Math.PI * kWheelRadius / kEncoderResolutionDrive);
-    
-        // Set the distance (in this case, angle) in radians per pulse for the turning encoder.
-        // This is the the angle through an entire rotation (2 * pi) divided by the
-        // encoder resolution.
+
+        //Sets the distance per pulse to 360 degrees divided by the drive encoder resolution
         m_turningEncoder.setDistancePerPulse(2 * Math.PI / kEncoderResolutionTurn);
     
-        // Limit the PID Controller's input range between -pi and pi and set the input
-        // to be continuous.
+        // Limit the PID Controller's input range between -pi and pi and set the input to be continuous.
         m_turningPIDController.enableContinuousInput(-Math.PI, Math.PI);
     }
 
@@ -77,14 +74,10 @@ public class SwerveModule {
         kEncoderResolutionDrive = newEncoderResolution;
         kEncoderResolutionTurn = newEncoderResolution;
 
-        // Set the distance per pulse for the drive encoder. We can simply use the
-        // distance traveled for one rotation of the wheel divided by the encoder
-        // resolution.
+        //Sets the distance per pulse to the circumference of the wheel divided by the drive encoder resolution
         m_driveEncoder.setDistancePerPulse(2 * Math.PI * kWheelRadius / kEncoderResolutionDrive);
     
-        // Set the distance (in this case, angle) in radians per pulse for the turning encoder.
-        // This is the the angle through an entire rotation (2 * pi) divided by the
-        // encoder resolution.
+        //Sets the distance per pulse to 360 degrees divided by the drive encoder resolution
         m_turningEncoder.setDistancePerPulse(2 * Math.PI / kEncoderResolutionTurn);
     }
 
@@ -92,14 +85,10 @@ public class SwerveModule {
         kEncoderResolutionDrive = newDriveEncoderResolution;
         kEncoderResolutionTurn = newTurnEncoderResolution;
 
-        // Set the distance per pulse for the drive encoder. We can simply use the
-        // distance traveled for one rotation of the wheel divided by the encoder
-        // resolution.
+        //Sets the distance per pulse to the circumference of the wheel divided by the drive encoder resolution
         m_driveEncoder.setDistancePerPulse(2 * Math.PI * kWheelRadius / kEncoderResolutionDrive);
     
-        // Set the distance (in this case, angle) in radians per pulse for the turning encoder.
-        // This is the the angle through an entire rotation (2 * pi) divided by the
-        // encoder resolution.
+        //Sets the distance per pulse to 360 degrees divided by the drive encoder resolution
         m_turningEncoder.setDistancePerPulse(2 * Math.PI / kEncoderResolutionTurn);
     }
 
