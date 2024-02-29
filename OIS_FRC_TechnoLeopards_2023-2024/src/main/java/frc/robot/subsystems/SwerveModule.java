@@ -21,6 +21,9 @@ import com.revrobotics.CANSparkMax;
 public class SwerveModule {
     private static final double kWheelRadius = 0.0508;//NEED TO FIND
     private static final int kEncoderResolution = 4096;//NEED TO FIND
+    /*
+    * kEncoderResolution like ADS, higher resolution = more precision but lower speed and lower resolution = less precision but higher speed
+    */
 
     private static final double kModuleMaxAngularVelocity = Math.PI;
     private static final double kModuleMaxAngularAcceleration = 2 * Math.PI;
