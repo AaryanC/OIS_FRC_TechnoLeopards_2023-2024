@@ -39,7 +39,7 @@ public class Drive extends Command {
 
     @Override
     public void execute(){
-        driveTrain.arcadeDrive(lsp.getAsDouble(),rsp.getAsDouble());
+        driveTrain.drive(lsp.getAsDouble(),rsp.getAsDouble());
     }
 
     @Override
