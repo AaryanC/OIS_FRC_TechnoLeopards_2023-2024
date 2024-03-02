@@ -12,11 +12,11 @@ public class Drive extends Command {
     private DoubleSupplier lsp;
     private DoubleSupplier rsp;
     
-    public Drive(DriveSubsystem driveTrain, DoubleSupplier leftspeed, DoubleSupplier rightspeed){
-        this.driveTrain = driveTrain;
+    public Drive(DriveSubsystem driveSubsystem, DoubleSupplier leftspeed, DoubleSupplier rightspeed){
+        this.driveTrain = driveSubsystem;
         this.lsp = leftspeed;
         this.rsp = rightspeed;
-        addRequirements(driveTrain);
+        addRequirements(driveSubsystem);
     }
 
     public void updateSpeed(DoubleSupplier leftSpeed, DoubleSupplier rightSpeed){

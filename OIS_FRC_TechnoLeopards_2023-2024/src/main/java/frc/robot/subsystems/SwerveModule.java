@@ -26,7 +26,7 @@ public class SwerveModule {
     private int kEncoderResolutionDrive = 4096;//NEED TO FIND
     private int kEncoderResolutionTurn = 4096;//NEED TO FIND
 
-    private static final double kModuleMaxAngularVelocity = Math.PI;
+    private static final double kModuleMaxAngularVelocity = DriveSubsystem.getMaxSpeed();
     private static final double kModuleMaxAngularAcceleration = 2 * Math.PI;
 
     private final CANSparkMax m_driveMotor;
