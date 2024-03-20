@@ -8,6 +8,7 @@ import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj.Encoder;
+
 import com.revrobotics.CANSparkLowLevel;
 import com.revrobotics.CANSparkMax;
 
@@ -22,13 +23,11 @@ public class SwerveModule {
     private final CANSparkMax m_turningMotor;
     private final Encoder m_driveEncoder;
     private final Encoder m_turningEncoder;
-    private final PIDController m_drivePIDController = new PIDController(1, 0, 0);
+    private final PIDController m_drivePIDController = new PIDController(1, 0, 0);//PID COntroller BS needs to be fucking sorted
     private final ProfiledPIDController m_turningPIDController = 
-        new ProfiledPIDController(1, 0, 0, new TrapezoidProfile.Constraints(kModuleMaxAngularVelocity, kModuleMaxAngularAcceleration));
+        new ProfiledPIDController(1, 0, 0, new TrapezoidProfile.Constraints(kModuleMaxAngularVelocity, kModuleMaxAngularAcceleration));//PID COntroller BS needs to be fucking sorted
     private final SimpleMotorFeedforward m_driveFeedforward = new SimpleMotorFeedforward(1, 3);
     private final SimpleMotorFeedforward m_turnFeedforward = new SimpleMotorFeedforward(1, 0.5);
-
-    //private Joystick joystick;
 
     public SwerveModule(int turningDeviceId,
                         int driveDeviceId,
@@ -43,14 +42,6 @@ public class SwerveModule {
         m_driveEncoder.setDistancePerPulse(2 * Math.PI * kWheelRadius / kEncoderResolutionDrive);
         m_turningEncoder.setDistancePerPulse(2 * Math.PI / kEncoderResolutionTurn);
         m_turningPIDController.enableContinuousInput(-Math.PI, Math.PI);
-        //this.joystick = joystick;
-    }
-
-    public void updateEncoderResolution(int newEncoderResolution){
-        kEncoderResolutionDrive = newEncoderResolution;
-        kEncoderResolutionTurn = newEncoderResolution;
-        m_driveEncoder.setDistancePerPulse(2 * Math.PI * kWheelRadius / kEncoderResolutionDrive);
-        m_turningEncoder.setDistancePerPulse(2 * Math.PI / kEncoderResolutionTurn);
     }
 
     public void updateEncoderResolution(int newDriveEncoderResolution, int newTurnEncoderResolution){
@@ -89,7 +80,7 @@ public class SwerveModule {
     }
 
     /*
-    public void setDesiredStateFromJoystick() {
+    public void setDesiredStateFromJoystick(Joystick joystick) {
         double x = joystick.getX();
         double y = joystick.getY();
         double rotation = joystick.getRawAxis(3);
@@ -97,6 +88,6 @@ public class SwerveModule {
         Rotation2d angle = new Rotation2d(Math.atan2(y, x));
         SwerveModuleState desiredState = new SwerveModuleState(speed, angle);
         setDesiredState(desiredState);
-    } 
-    */
+    }
+     */
 }

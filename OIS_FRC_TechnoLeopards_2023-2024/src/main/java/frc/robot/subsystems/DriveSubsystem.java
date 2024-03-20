@@ -1,7 +1,5 @@
 package frc.robot.subsystems;
 
-import com.revrobotics.CANSparkLowLevel;
-
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
@@ -46,6 +44,20 @@ public class DriveSubsystem extends SubsystemBase{
         m_frontRight.setDesiredState(swerveModuleStates[1]);
         m_backLeft.setDesiredState(swerveModuleStates[2]);
         m_backRight.setDesiredState(swerveModuleStates[3]);
+    }
+
+    public void updateEncoderResolutionDrive(int newDriveEncoderResolution){
+        m_frontLeft.updateEncoderResolution(newDriveEncoderResolution, m_frontLeft.getTurnEncoderResolution());
+        m_frontRight.updateEncoderResolution(newDriveEncoderResolution, m_frontRight.getTurnEncoderResolution());
+        m_backLeft.updateEncoderResolution(newDriveEncoderResolution, m_backLeft.getTurnEncoderResolution());
+        m_backRight.updateEncoderResolution(newDriveEncoderResolution, m_backRight.getTurnEncoderResolution());
+    }
+
+    public void updateEncoderResolutionTurn(int newTrueEncoderResolution){
+        m_frontLeft.updateEncoderResolution(m_frontLeft.getDriveEncoderResolution(), newTrueEncoderResolution);
+        m_frontRight.updateEncoderResolution(m_frontRight.getDriveEncoderResolution(), newTrueEncoderResolution);
+        m_backLeft.updateEncoderResolution(m_backLeft.getDriveEncoderResolution(), newTrueEncoderResolution);
+        m_backRight.updateEncoderResolution(m_backRight.getDriveEncoderResolution(), newTrueEncoderResolution);
     }
 }
  

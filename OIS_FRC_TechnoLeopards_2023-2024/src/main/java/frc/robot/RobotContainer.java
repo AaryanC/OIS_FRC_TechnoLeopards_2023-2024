@@ -5,12 +5,12 @@
 package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.commands.EncoderResolution.UpdateDriveResolution;
+import frc.robot.commands.EncoderResolution.UpdateTurnResolution;
 import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.commands.Drive;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
@@ -42,6 +42,11 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    
+    new JoystickButton(joystick, 7).onTrue(new UpdateDriveResolution(m_driveSubsystem, 6144));
+    new JoystickButton(joystick, 9).onTrue(new UpdateDriveResolution(m_driveSubsystem, 4096));
+    new JoystickButton(joystick, 11).onTrue(new UpdateDriveResolution(m_driveSubsystem, 2048));
+    new JoystickButton(joystick, 8).onTrue(new UpdateTurnResolution(m_driveSubsystem, 6144));
+    new JoystickButton(joystick, 10).onTrue(new UpdateTurnResolution(m_driveSubsystem, 4096));
+    new JoystickButton(joystick, 12).onTrue(new UpdateTurnResolution(m_driveSubsystem, 2048));
   }
 }
