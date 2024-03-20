@@ -11,17 +11,13 @@ public class Drive extends Command {
     private DoubleSupplier lsp;
     private DoubleSupplier rsp;
     private DoubleSupplier rot;
-    private boolean fieldRelative;
-    private DoubleSupplier periodSeconds;
     private double maxSpeed;
     
-    public Drive(DriveSubsystem driveSubsystem, DoubleSupplier leftspeed, DoubleSupplier rightspeed, DoubleSupplier rot, boolean fieldRelative, DoubleSupplier periodSeconds){
+    public Drive(DriveSubsystem driveSubsystem, DoubleSupplier leftspeed, DoubleSupplier rightspeed, DoubleSupplier rot){
         this.driveTrain = driveSubsystem;
         this.lsp = leftspeed;
         this.rsp = rightspeed;
         this.rot = rot;
-        this.fieldRelative = fieldRelative;
-        this.periodSeconds = periodSeconds;
         addRequirements(driveSubsystem);
     }
 
@@ -42,14 +38,6 @@ public class Drive extends Command {
         this.rot = rot;
     }
 
-    public void updateFieldRelative(boolean fieldRelative){
-        this.fieldRelative = fieldRelative;
-    }
-
-    public void updatePeriodSeconds(DoubleSupplier periodSeconds){
-        this.periodSeconds = periodSeconds;
-    }
-
     public void updateMaxSpeed(double maxSpeed){
         this.maxSpeed = maxSpeed;
     }
@@ -62,7 +50,7 @@ public class Drive extends Command {
     @Override
     public void execute(){
         driveTrain.updateMaxSpeed(maxSpeed);
-        driveTrain.drive(lsp.getAsDouble(), rsp.getAsDouble(), rot.getAsDouble(), fieldRelative, periodSeconds.getAsDouble());
+        driveTrain.drive(lsp.getAsDouble(), rsp.getAsDouble(), rot.getAsDouble());
     }
 
     @Override

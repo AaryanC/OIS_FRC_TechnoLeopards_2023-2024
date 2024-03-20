@@ -21,8 +21,6 @@ public class Robot extends TimedRobot {
 
   private RobotContainer m_robotContainer;
 
-  private Joystick joystick;
-
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -60,12 +58,14 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
+    /*
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
     }
+    */
   }
 
   /** This function is called periodically during autonomous. */
@@ -86,7 +86,11 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    joystick.getDirectionDegrees();
+    DriveSubsystem driveSubsystem = m_robotContainer.m_driveSubsystem;
+    Joystick joystick = m_robotContainer.joystick;
+    driveSubsystem.drive(joystick.getX(), joystick.getY(), joystick.getZ());
+    System.out.println(joystick.getX() + " " + joystick.getY() + " " + joystick.getZ());
+    //m_robotContainer.driveTrain.arcadeDrive(RobotContainer.driveStick.getY()*Constants.SpeedConstants.driveSpeed, RobotContainer.driveStick.getZ()*Constants.SpeedConstants.rotateSpeed);
   }
 
   @Override
