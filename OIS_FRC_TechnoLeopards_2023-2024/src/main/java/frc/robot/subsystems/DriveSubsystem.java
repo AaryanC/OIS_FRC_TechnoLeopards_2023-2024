@@ -19,10 +19,10 @@ public class DriveSubsystem extends SubsystemBase{
     private final Translation2d m_backLeftLocation = new Translation2d(-translationDistance, translationDistance);
     private final Translation2d m_backRightLocation = new Translation2d(-translationDistance, -translationDistance);
     
-    private final SwerveModule m_frontLeft = new SwerveModule(2, 1, CANSparkLowLevel.MotorType.kBrushless, CANSparkLowLevel.MotorType.kBrushless, 0, 0, 0, 0);
-    private final SwerveModule m_frontRight = new SwerveModule(4, 3, CANSparkLowLevel.MotorType.kBrushless, CANSparkLowLevel.MotorType.kBrushless, 0, 0, 0, 0);
-    private final SwerveModule m_backLeft = new SwerveModule(6, 5, CANSparkLowLevel.MotorType.kBrushless, CANSparkLowLevel.MotorType.kBrushless, 0, 0, 0, 0);
-    private final SwerveModule m_backRight = new SwerveModule(8, 7, CANSparkLowLevel.MotorType.kBrushless, CANSparkLowLevel.MotorType.kBrushless, 0, 0, 0, 0);
+    private final SwerveModule m_frontLeft = new SwerveModule(1, 2, 0, 0, 0, 0);
+    private final SwerveModule m_frontRight = new SwerveModule(3, 4, 0, 0, 0, 0);
+    private final SwerveModule m_backLeft = new SwerveModule(5, 6, 0, 0, 0, 0);
+    private final SwerveModule m_backRight = new SwerveModule(7, 8, 0, 0, 0, 0);
 
     private final SwerveDriveKinematics m_kinematics = new SwerveDriveKinematics(m_frontLeftLocation, m_frontRightLocation, m_backLeftLocation, m_backRightLocation);
     

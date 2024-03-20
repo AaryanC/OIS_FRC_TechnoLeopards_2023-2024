@@ -1,3 +1,42 @@
+package frc.robot.subsystems;
+
+import com.revrobotics.CANSparkLowLevel;
+import com.revrobotics.CANSparkMax;
+
+public class ShooterSubsystem {
+    private static final double maxSpeed = 3.0;
+    private static double currSpeed = maxSpeed;
+    private final CANSparkMax lowerShooterMotor;
+    private final CANSparkMax upperShooterMotor;
+
+    public ShooterSubsystem(){
+        lowerShooterMotor = new CANSparkMax(10, CANSparkLowLevel.MotorType.kBrushless);
+        upperShooterMotor = new CANSparkMax(9, CANSparkLowLevel.MotorType.kBrushless);
+    }
+
+    public static void updateSpeed(double speed){
+        if(Math.abs(speed) <= maxSpeed){
+            currSpeed = speed; 
+        } else{
+            if (speed > 0){
+                currSpeed = maxSpeed;
+            } else{
+                currSpeed = -maxSpeed;
+            }
+        }
+    }
+
+    public void runShooter(){
+        lowerShooterMotor.set(currSpeed);
+        upperShooterMotor.set(currSpeed);
+    }
+
+    public void stopShooter(){
+        lowerShooterMotor.stopMotor();
+        upperShooterMotor.stopMotor();
+    }
+}
+
 /* 
 package frc.robot.subsystems;
 

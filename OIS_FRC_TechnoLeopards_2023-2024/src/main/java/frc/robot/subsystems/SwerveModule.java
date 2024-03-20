@@ -30,16 +30,14 @@ public class SwerveModule {
 
     //private Joystick joystick;
 
-    public SwerveModule(int driveDeviceId,
-                        int turningDeviceId, 
-                        CANSparkLowLevel.MotorType driveMotorType,
-                        CANSparkLowLevel.MotorType turningMotorType,
+    public SwerveModule(int turningDeviceId,
+                        int driveDeviceId,
                         int driveEncoderChannelA, 
                         int driveEncoderChannelB, 
                         int turningEncoderChannelA, 
                         int turningEncoderChannelB) {
-        m_driveMotor = new CANSparkMax(driveDeviceId, driveMotorType);
-        m_turningMotor = new CANSparkMax(turningDeviceId, turningMotorType);
+        m_driveMotor = new CANSparkMax(driveDeviceId, CANSparkLowLevel.MotorType.kBrushless);
+        m_turningMotor = new CANSparkMax(turningDeviceId, CANSparkLowLevel.MotorType.kBrushless);
         m_driveEncoder = new Encoder(driveEncoderChannelA, driveEncoderChannelB);
         m_turningEncoder = new Encoder(turningEncoderChannelA, turningEncoderChannelB);
         m_driveEncoder.setDistancePerPulse(2 * Math.PI * kWheelRadius / kEncoderResolutionDrive);
