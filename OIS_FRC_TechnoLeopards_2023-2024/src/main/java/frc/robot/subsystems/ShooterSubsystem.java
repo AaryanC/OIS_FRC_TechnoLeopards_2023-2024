@@ -14,10 +14,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.MotorConstants;
 
-public class gripperSubsystem extends SubsystemBase {
+public class shooterSubsystem extends SubsystemBase {
   /** Creates a new TelescopicSubsystem. */
-  public static final CANSparkMax shooter1 = new CANSparkMax(MotorConstants.gripper1, MotorType.kBrushless);
-  public static final CANSparkMax shooter2 = new CANSparkMax(MotorConstants.gripper2, MotorType.kBrushless);
+  public static final CANSparkMax shooter1 = new CANSparkMax(MotorConstants.shooter1, MotorType.kBrushless);
+  public static final CANSparkMax shooter2 = new CANSparkMax(MotorConstants.shooter2, MotorType.kBrushless);
 
   public final static MotorControllerGroup shooterGroup = new MotorControllerGroup(shooter1, shooter2);
 
