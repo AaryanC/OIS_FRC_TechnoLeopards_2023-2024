@@ -21,19 +21,15 @@ public class DriveSubsystem extends SubsystemBase{
     private final Translation2d m_backLeftLocation = new Translation2d(-translationDistance, translationDistance);
     private final Translation2d m_backRightLocation = new Translation2d(-translationDistance, -translationDistance);
     
-    private final SwerveModule m_frontLeft = new SwerveModule(0, 0, CANSparkLowLevel.MotorType.kBrushless, CANSparkLowLevel.MotorType.kBrushless, 0, 0, 0, 0);
-    private final SwerveModule m_frontRight = new SwerveModule(0, 0, CANSparkLowLevel.MotorType.kBrushless, CANSparkLowLevel.MotorType.kBrushless, 0, 0, 0, 0);
-    private final SwerveModule m_backLeft = new SwerveModule(0, 0, CANSparkLowLevel.MotorType.kBrushless, CANSparkLowLevel.MotorType.kBrushless, 0, 0, 0, 0);
-    private final SwerveModule m_backRight = new SwerveModule(0, 0, CANSparkLowLevel.MotorType.kBrushless, CANSparkLowLevel.MotorType.kBrushless, 0, 0, 0, 0);
-    
-    private final AnalogGyro m_gyro = new AnalogGyro(0);
+    private final SwerveModule m_frontLeft = new SwerveModule(2, 1, CANSparkLowLevel.MotorType.kBrushless, CANSparkLowLevel.MotorType.kBrushless, 0, 0, 0, 0);
+    private final SwerveModule m_frontRight = new SwerveModule(4, 3, CANSparkLowLevel.MotorType.kBrushless, CANSparkLowLevel.MotorType.kBrushless, 0, 0, 0, 0);
+    private final SwerveModule m_backLeft = new SwerveModule(6, 5, CANSparkLowLevel.MotorType.kBrushless, CANSparkLowLevel.MotorType.kBrushless, 0, 0, 0, 0);
+    private final SwerveModule m_backRight = new SwerveModule(8, 7, CANSparkLowLevel.MotorType.kBrushless, CANSparkLowLevel.MotorType.kBrushless, 0, 0, 0, 0);
 
     private final SwerveDriveKinematics m_kinematics = new SwerveDriveKinematics(m_frontLeftLocation, m_frontRightLocation, m_backLeftLocation, m_backRightLocation);
-    //WHY IN THE WORLD DO WE NEED m_odomtery??? IT ISNT USED BY ANYTHING
-    private final SwerveDriveOdometry m_odometry = new SwerveDriveOdometry(m_kinematics, m_gyro.getRotation2d(), new SwerveModulePosition[] { m_frontLeft.getPosition(), m_frontRight.getPosition(), m_backLeft.getPosition(), m_backRight.getPosition()});
     
     public DriveSubsystem(){
-        m_gyro.reset();
+        
     }
 
     public static double getMaxSpeed(){
@@ -58,15 +54,6 @@ public class DriveSubsystem extends SubsystemBase{
         m_frontRight.setDesiredState(swerveModuleStates[1]);
         m_backLeft.setDesiredState(swerveModuleStates[2]);
         m_backRight.setDesiredState(swerveModuleStates[3]);
-    }
-
-    public void updateOdometry(){
-        m_odometry.update(m_gyro.getRotation2d(), new SwerveModulePosition[] {
-            m_frontLeft.getPosition(),
-            m_frontRight.getPosition(),
-            m_backLeft.getPosition(),
-            m_backRight.getPosition()
-        });
     }
 }
  

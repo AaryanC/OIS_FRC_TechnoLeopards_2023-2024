@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+/* 
 package frc.robot.subsystems;
 
 import edu.wpi.first.math.controller.PIDController;
@@ -103,7 +103,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.MotorConstants;
 
 public class shooterSubsystem extends SubsystemBase {
-  /** Creates a new TelescopicSubsystem. */
+  /** Creates a new TelescopicSubsystem. 
   public static final CANSparkMax shooter1 = new CANSparkMax(MotorConstants.shooter1, MotorType.kBrushless);
   public static final CANSparkMax shooter2 = new CANSparkMax(MotorConstants.shooter2, MotorType.kBrushless);
 
@@ -125,3 +125,5 @@ public class shooterSubsystem extends SubsystemBase {
   }
 }
 >>>>>>> 26924095b93499f060eb438168fcec9cf04c4eca
+
+*/
