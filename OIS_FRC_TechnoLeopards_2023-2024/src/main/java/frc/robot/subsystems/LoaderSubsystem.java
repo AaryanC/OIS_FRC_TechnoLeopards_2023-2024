@@ -4,7 +4,7 @@ import com.revrobotics.CANSparkLowLevel;
 import com.revrobotics.CANSparkMax;
 
 public class LoaderSubsystem {
-    private static final double maxSpeed = 3.0;//CHECK SPEED
+    private static final double maxSpeed = 1.0;
     private static double currSpeed = maxSpeed;
     private final CANSparkMax lowerLoaderMotor;
     private final CANSparkMax upperLoaderMotor;

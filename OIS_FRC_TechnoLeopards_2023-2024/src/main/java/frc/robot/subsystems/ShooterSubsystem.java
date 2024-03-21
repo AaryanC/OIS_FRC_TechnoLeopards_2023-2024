@@ -4,7 +4,7 @@ import com.revrobotics.CANSparkLowLevel;
 import com.revrobotics.CANSparkMax;
 
 public class ShooterSubsystem {
-    private static final double maxSpeed = 3.0;
+    private static final double maxSpeed = 1.0;
     private static double currSpeed = maxSpeed;
     private final CANSparkMax lowerShooterMotor;
     private final CANSparkMax upperShooterMotor;
