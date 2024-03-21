@@ -18,10 +18,37 @@ public class DriveSubsystem extends SubsystemBase{
     private final Translation2d m_backLeftLocation = new Translation2d(-translationDistance, translationDistance);
     private final Translation2d m_backRightLocation = new Translation2d(-translationDistance, -translationDistance);
     
-    private final SwerveModule m_frontLeft = new SwerveModule(Constants.driveSubsystemFrontLeftTurnDeviceId, Constants.driveSubsystemFrontLeftDriveDeviceId, 0, 0, 0, 0);
-    private final SwerveModule m_frontRight = new SwerveModule(Constants.driveSubsystemFrontRightTurnDeviceId, Constants.driveSubsystemFrontRightDriveDeviceId, 0, 0, 0, 0);
-    private final SwerveModule m_backLeft = new SwerveModule(Constants.driveSubsystemBackLeftTurnDeviceId, Constants.driveSubsystemBackLeftDriveDeviceId, 0, 0, 0, 0);
-    private final SwerveModule m_backRight = new SwerveModule(Constants.driveSubsystemBackRightTurnDeviceId, Constants.driveSubsystemBackRightDriveDeviceId, 0, 0, 0, 0);
+    private final SwerveModule m_frontLeft = new SwerveModule(
+        Constants.driveSubsystemFrontLeftTurnDeviceId, 
+        Constants.driveSubsystemFrontLeftDriveDeviceId, 
+        0, 
+        0, 
+        0, 
+        0);
+
+    private final SwerveModule m_frontRight = new SwerveModule(
+        Constants.driveSubsystemFrontRightTurnDeviceId, 
+    Constants.driveSubsystemFrontRightDriveDeviceId, 
+    0, 
+    0, 
+    0, 
+    0);
+    
+    private final SwerveModule m_backLeft = new SwerveModule(
+        Constants.driveSubsystemBackLeftTurnDeviceId, 
+    Constants.driveSubsystemBackLeftDriveDeviceId, 
+    0, 
+    0, 
+    0, 
+    0);
+    
+    private final SwerveModule m_backRight = new SwerveModule(
+        Constants.driveSubsystemBackRightTurnDeviceId, 
+        Constants.driveSubsystemBackRightDriveDeviceId, 
+        0, 
+        0, 
+        0, 
+        0);
 
     private final SwerveDriveKinematics m_kinematics = new SwerveDriveKinematics(m_frontLeftLocation, m_frontRightLocation, m_backLeftLocation, m_backRightLocation);
     

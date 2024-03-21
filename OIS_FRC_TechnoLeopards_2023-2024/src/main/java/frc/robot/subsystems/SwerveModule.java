@@ -13,7 +13,7 @@ import com.revrobotics.CANSparkLowLevel;
 import com.revrobotics.CANSparkMax;
 
 public class SwerveModule {
-    private static final double kWheelRadius = 0.0508;
+    private static final double kWheelRadius = 0.0504;
     private int kEncoderResolutionDrive = 4096;
     private int kEncoderResolutionTurn = 4096;
     private static final double kModuleMaxAngularVelocity = DriveSubsystem.getMaxSpeed();
@@ -42,6 +42,14 @@ public class SwerveModule {
         m_driveEncoder.setDistancePerPulse(2 * Math.PI * kWheelRadius / kEncoderResolutionDrive);
         m_turningEncoder.setDistancePerPulse(2 * Math.PI / kEncoderResolutionTurn);
         m_turningPIDController.enableContinuousInput(-Math.PI, Math.PI);
+    }
+
+    public int getDriveEncoderResolution(){
+        return kEncoderResolutionDrive;
+    }
+
+    public int getTurnEncoderResolution(){
+        return kEncoderResolutionTurn;
     }
 
     public SwerveModuleState getState() {

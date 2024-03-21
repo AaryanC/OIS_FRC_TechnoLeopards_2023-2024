@@ -32,4 +32,22 @@ public final class Constants {
   public static final int driveSubsystemBackLeftDriveDeviceId = 6;
   public static final int driveSubsystemBackRightTurnDeviceId = 7;
   public static final int driveSubsystemBackRightDriveDeviceId = 8;
+
+  public static final int driveSubsystemFrontLeftDriveEncoderChannelA = 0;
+  public static final int driveSubsystemFrontLeftDriveEncoderChannelB = 0;
+  public static final int driveSubsystemFrontLeftTurnEncoderChannelA = 0;
+  public static final int driveSubsystemFrontLeftTurnEncoderChannelB = 0;
+  public static final int driveSubsystemFrontRightDriveEncoderChannelA = 0;
+  public static final int driveSubsystemFrontRightDriveEncoderChannelB = 0;
+  public static final int driveSubsystemFrontRightTurnEncoderChannelA = 0;
+  public static final int driveSubsystemFrontRightTurnEncoderChannelB = 0;
+  public static final int driveSubsystemBackLeftDriveEncoderChannelA = 0;
+  public static final int driveSubsystemBackLeftDriveEncoderChannelB = 0;
+  public static final int driveSubsystemBackLeftTurnEncoderChannelA = 0;
+  public static final int driveSubsystemBackLeftTurnEncoderChannelB = 0;
+  public static final int driveSubsystemBackRightDriveEncoderChannelA = 0;
+  public static final int driveSubsystemBackRightDriveEncoderChannelB = 0;
+  public static final int driveSubsystemBackRightTurnEncoderChannelA = 0;
+  public static final int driveSubsystemBackRightTurnEncoderChannelB = 0;
+  
 }
