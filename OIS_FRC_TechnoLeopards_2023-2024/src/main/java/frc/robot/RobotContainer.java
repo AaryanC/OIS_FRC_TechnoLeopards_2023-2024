@@ -7,8 +7,6 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.TurnOff;
 import frc.robot.commands.TurnOn;
-import frc.robot.commands.EncoderResolution.UpdateDriveResolution;
-import frc.robot.commands.EncoderResolution.UpdateTurnResolution;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.LoaderSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -59,13 +57,6 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    button7.onTrue(new UpdateDriveResolution(m_driveSubsystem, 6144));
-    button9.onTrue(new UpdateDriveResolution(m_driveSubsystem, 4096));
-    button11.onTrue(new UpdateDriveResolution(m_driveSubsystem, 2048));
-    button8.onTrue(new UpdateTurnResolution(m_driveSubsystem, 6144));
-    button10.onTrue(new UpdateTurnResolution(m_driveSubsystem, 4096));
-    button12.onTrue(new UpdateTurnResolution(m_driveSubsystem, 2048));
-
     button1.onTrue(new TurnOn(m_ShooterSubsystem));
     button1.onFalse(new TurnOff(m_ShooterSubsystem));
 
