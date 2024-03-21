@@ -16,6 +16,7 @@ public class SwerveModule {
     private static final double kWheelRadius = 0.0504;
     private int kEncoderResolutionDrive = 4096;
     private int kEncoderResolutionTurn = 4096;
+    private static int kEncoderResolution = 4096;
     private static final double kModuleMaxAngularVelocity = DriveSubsystem.getMaxSpeed();
     private static final double kModuleMaxAngularAcceleration = 2 * Math.PI;
 

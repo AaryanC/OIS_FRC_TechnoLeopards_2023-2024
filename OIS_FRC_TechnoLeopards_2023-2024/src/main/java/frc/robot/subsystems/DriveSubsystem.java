@@ -4,6 +4,7 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -12,10 +13,10 @@ public class DriveSubsystem extends SubsystemBase{
     private double kMaxSpeed = kTrueMaxSpeed;
     private static final double kMaxAngularSpeed = Math.PI; //180 degrees/s max speed
 
-    Encoder frontLeftDriveEncoder = SwerveModule.createSharedEncoderConfiguration(Constants.frontLeftEncoderChannelA, Constants.frontLeftEncoderChannelB);
-    Encoder frontRightDriveEncoder = SwerveModule.createSharedEncoderConfiguration(Constants.frontRightEncoderChannelA, Constants.frontRightEncoderChannelB);
-    Encoder backLeftDriveEncoder = SwerveModule.createSharedEncoderConfiguration(Constants.backLeftEncoderChannelA, Constants.backLeftEncoderChannelB);
-    Encoder backRightDriveEncoder = SwerveModule.createSharedEncoderConfiguration(Constants.backRightEncoderChannelA, Constants.backRightEncoderChannelB);
+    Encoder frontLeftDriveEncoder = SwerveModule.createSharedEncoderConfiguration(Constants.driveSubsystemFrontLeftEncoderChannelA, Constants.driveSubsystemFrontLeftEncoderChannelB);
+    Encoder frontRightDriveEncoder = SwerveModule.createSharedEncoderConfiguration(Constants.driveSubsystemFrontRightEncoderChannelA, Constants.driveSubsystemFrontRightEncoderChannelB);
+    Encoder backLeftDriveEncoder = SwerveModule.createSharedEncoderConfiguration(Constants.driveSubsystemBackLeftEncoderChannelA, Constants.driveSubsystemBackLeftEncoderChannelB);
+    Encoder backRightDriveEncoder = SwerveModule.createSharedEncoderConfiguration(Constants.driveSubsystemBackRightEncoderChannelA, Constants.driveSubsystemBackRightEncoderChannelB);
 
     private final double translationDistance = 0.381;//Enter translation distance here
     private final Translation2d m_frontLeftLocation = new Translation2d(translationDistance, translationDistance);
