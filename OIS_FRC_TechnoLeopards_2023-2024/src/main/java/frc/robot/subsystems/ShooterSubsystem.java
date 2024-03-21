@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkLowLevel;
 import com.revrobotics.CANSparkMax;
+import frc.robot.Constants;
 
 public class ShooterSubsystem {
     private static final double maxSpeed = 1.0;
@@ -10,8 +11,8 @@ public class ShooterSubsystem {
     private final CANSparkMax upperShooterMotor;
 
     public ShooterSubsystem(){
-        lowerShooterMotor = new CANSparkMax(10, CANSparkLowLevel.MotorType.kBrushless);
-        upperShooterMotor = new CANSparkMax(9, CANSparkLowLevel.MotorType.kBrushless);
+        lowerShooterMotor = new CANSparkMax(Constants.lowerShooterMotorDeviceId, CANSparkLowLevel.MotorType.kBrushless);
+        upperShooterMotor = new CANSparkMax(Constants.upperShooterMotorDeviceId, CANSparkLowLevel.MotorType.kBrushless);
     }
 
     public static void updateSpeed(double speed){

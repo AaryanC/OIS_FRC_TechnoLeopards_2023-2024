@@ -4,7 +4,6 @@
 
 package frc.robot;
 
-import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.TurnOff;
 import frc.robot.commands.TurnOn;
 import frc.robot.subsystems.DriveSubsystem;
@@ -26,7 +25,7 @@ public class RobotContainer {
   final DriveSubsystem m_driveSubsystem = new DriveSubsystem();
   final LoaderSubsystem m_LoaderSubsystem = new LoaderSubsystem();
   final ShooterSubsystem m_ShooterSubsystem = new ShooterSubsystem();
-  final Joystick joystick = new Joystick(OperatorConstants.kDriverControllerPort);
+  final Joystick joystick = new Joystick(Constants.kDriverControllerPort);
 
   private final JoystickButton button1 = new JoystickButton(joystick, 1);
   private final JoystickButton button2 = new JoystickButton(joystick, 2);
