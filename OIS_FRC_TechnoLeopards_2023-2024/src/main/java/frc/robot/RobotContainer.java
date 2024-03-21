@@ -6,7 +6,7 @@ package frc.robot;
 
 import frc.robot.commands.TurnOff;
 import frc.robot.commands.TurnOn;
-//import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.LoaderSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
@@ -22,7 +22,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  //final DriveSubsystem m_driveSubsystem = new DriveSubsystem();
+  final DriveSubsystem m_driveSubsystem = new DriveSubsystem();
   final LoaderSubsystem m_LoaderSubsystem = new LoaderSubsystem();
   final ShooterSubsystem m_ShooterSubsystem = new ShooterSubsystem();
   final Joystick joystick = new Joystick(Constants.kDriverControllerPort);
