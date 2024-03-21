@@ -63,16 +63,4 @@ public class SwerveModule {
         m_driveMotor.setVoltage(driveOutput + driveFeedforward);
         m_turningMotor.setVoltage(turnOutput + turnFeedforward);
     }
-
-    /*
-    public void setDesiredStateFromJoystick(Joystick joystick) {
-        double x = joystick.getX();
-        double y = joystick.getY();
-        double rotation = joystick.getRawAxis(3);
-        double speed = Math.sqrt(x * x + y * y);
-        Rotation2d angle = new Rotation2d(Math.atan2(y, x));
-        SwerveModuleState desiredState = new SwerveModuleState(speed, angle);
-        setDesiredState(desiredState);
-    }
-     */
 }
