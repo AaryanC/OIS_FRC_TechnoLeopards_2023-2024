@@ -44,21 +44,6 @@ public class SwerveModule {
         m_turningPIDController.enableContinuousInput(-Math.PI, Math.PI);
     }
 
-    public void updateEncoderResolution(int newDriveEncoderResolution, int newTurnEncoderResolution){
-        kEncoderResolutionDrive = newDriveEncoderResolution;
-        kEncoderResolutionTurn = newTurnEncoderResolution;
-        m_driveEncoder.setDistancePerPulse(2 * Math.PI * kWheelRadius / kEncoderResolutionDrive);
-        m_turningEncoder.setDistancePerPulse(2 * Math.PI / kEncoderResolutionTurn);
-    }
-
-    public int getDriveEncoderResolution(){
-        return kEncoderResolutionDrive;
-    }
-
-    public int getTurnEncoderResolution(){
-        return kEncoderResolutionTurn;
-    }
-
     public SwerveModuleState getState() {
         return new SwerveModuleState(m_driveEncoder.getRate(), new Rotation2d(m_turningEncoder.getDistance()));
     }
