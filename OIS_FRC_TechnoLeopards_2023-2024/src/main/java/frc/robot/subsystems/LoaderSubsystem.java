@@ -26,12 +26,12 @@ public class LoaderSubsystem {
         }
     }
 
-    public void runShooter(){
+    public void runLoader(){
         lowerLoaderMotor.set(currSpeed);
         upperLoaderMotor.set(currSpeed);
     }
 
-    public void stopShooter(){
+    public void stopLoader(){
         lowerLoaderMotor.stopMotor();
         upperLoaderMotor.stopMotor();
     }
