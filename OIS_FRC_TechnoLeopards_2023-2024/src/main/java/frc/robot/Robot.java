@@ -90,7 +90,8 @@ public class Robot extends TimedRobot {
     Joystick joystick = m_robotContainer.joystick;
     driveSubsystem.drive(joystick.getX(), joystick.getY(), joystick.getRawAxis(3));
     System.out.println(joystick.getX() + " " + joystick.getY() + " " + joystick.getZ());
-    //m_robotContainer.driveTrain.arcadeDrive(RobotContainer.driveStick.getY()*Constants.SpeedConstants.driveSpeed, RobotContainer.driveStick.getZ()*Constants.SpeedConstants.rotateSpeed);
+    
+    driveSubsystem.updateMaxSpeed(joystick.getThrottle());
   }
 
   @Override

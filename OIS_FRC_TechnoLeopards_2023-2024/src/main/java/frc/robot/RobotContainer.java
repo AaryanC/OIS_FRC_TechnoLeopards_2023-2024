@@ -28,18 +28,18 @@ public class RobotContainer {
   final ShooterSubsystem m_ShooterSubsystem = new ShooterSubsystem();
   final Joystick joystick = new Joystick(OperatorConstants.kDriverControllerPort);
 
-  JoystickButton button1 = new JoystickButton(joystick, 1);
-  JoystickButton button2 = new JoystickButton(joystick, 2);
-  JoystickButton button3 = new JoystickButton(joystick, 3);
-  JoystickButton button4 = new JoystickButton(joystick, 4);
-  JoystickButton button5 = new JoystickButton(joystick, 5);
-  JoystickButton button6 = new JoystickButton(joystick, 6);
-  JoystickButton button7 = new JoystickButton(joystick, 7);
-  JoystickButton button8 = new JoystickButton(joystick, 8);
-  JoystickButton button9 = new JoystickButton(joystick, 0);
-  JoystickButton button10 = new JoystickButton(joystick, 10);
-  JoystickButton button11 = new JoystickButton(joystick, 11);
-  JoystickButton button12 = new JoystickButton(joystick, 12);
+  private final JoystickButton button1 = new JoystickButton(joystick, 1);
+  private final JoystickButton button2 = new JoystickButton(joystick, 2);
+  //private final JoystickButton button3 = new JoystickButton(joystick, 3);
+  //private final JoystickButton button4 = new JoystickButton(joystick, 4);
+  //private final JoystickButton button5 = new JoystickButton(joystick, 5);
+  //private final JoystickButton button6 = new JoystickButton(joystick, 6);
+  //private final JoystickButton button7 = new JoystickButton(joystick, 7);
+  //private final JoystickButton button8 = new JoystickButton(joystick, 8);
+  //private final JoystickButton button9 = new JoystickButton(joystick, 0);
+  //private final JoystickButton button10 = new JoystickButton(joystick, 10);
+  //private final JoystickButton button11 = new JoystickButton(joystick, 11);
+  //private final JoystickButton button12 = new JoystickButton(joystick, 12);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {

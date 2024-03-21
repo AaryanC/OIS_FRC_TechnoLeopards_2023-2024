@@ -33,7 +33,9 @@ public class DriveSubsystem extends SubsystemBase{
     }
 
     public void updateMaxSpeed(double maxSpeed){
-        kMaxSpeed = maxSpeed;
+        if (maxSpeed <= kTrueMaxSpeed && maxSpeed >= 0){
+            kMaxSpeed = maxSpeed;
+        }
     }
 
     public void drive(double xSpeed, double ySpeed, double rot){
