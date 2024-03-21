@@ -12,6 +12,11 @@ public class DriveSubsystem extends SubsystemBase{
     private double kMaxSpeed = kTrueMaxSpeed;
     private static final double kMaxAngularSpeed = Math.PI; //180 degrees/s max speed
 
+    Encoder frontLeftDriveEncoder = SwerveModule.createSharedEncoderConfiguration(Constants.frontLeftEncoderChannelA, Constants.frontLeftEncoderChannelB);
+    Encoder frontRightDriveEncoder = SwerveModule.createSharedEncoderConfiguration(Constants.frontRightEncoderChannelA, Constants.frontRightEncoderChannelB);
+    Encoder backLeftDriveEncoder = SwerveModule.createSharedEncoderConfiguration(Constants.backLeftEncoderChannelA, Constants.backLeftEncoderChannelB);
+    Encoder backRightDriveEncoder = SwerveModule.createSharedEncoderConfiguration(Constants.backRightEncoderChannelA, Constants.backRightEncoderChannelB);
+
     private final double translationDistance = 0.381;//Enter translation distance here
     private final Translation2d m_frontLeftLocation = new Translation2d(translationDistance, translationDistance);
     private final Translation2d m_frontRightLocation = new Translation2d(translationDistance, -translationDistance);
