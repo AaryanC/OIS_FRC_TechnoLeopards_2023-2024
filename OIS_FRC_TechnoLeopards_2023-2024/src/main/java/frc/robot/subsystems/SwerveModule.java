@@ -1,4 +1,4 @@
-package frc.robot.subsystems;
+/*package frc.robot.subsystems;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.ProfiledPIDController;
@@ -25,8 +25,7 @@ public class SwerveModule {
     private final Encoder m_driveEncoder;
     private final Encoder m_turningEncoder;
     private final PIDController m_drivePIDController = new PIDController(1, 0, 0);//PID COntroller BS needs to be fucking sorted
-    private final ProfiledPIDController m_turningPIDController = 
-    new ProfiledPIDController(1, 0, 0, new TrapezoidProfile.Constraints(kModuleMaxAngularVelocity, kModuleMaxAngularAcceleration));//PID COntroller BS needs to be fucking sorted
+    private final ProfiledPIDController m_turningPIDController = new ProfiledPIDController(1, 0, 0, new TrapezoidProfile.Constraints(kModuleMaxAngularVelocity, kModuleMaxAngularAcceleration));//PID COntroller BS needs to be fucking sorted
     private final SimpleMotorFeedforward m_driveFeedforward = new SimpleMotorFeedforward(1, 3);
     private final SimpleMotorFeedforward m_turnFeedforward = new SimpleMotorFeedforward(1, 0.5);
 
@@ -79,3 +78,4 @@ public class SwerveModule {
         m_turningMotor.setVoltage(turnOutput + turnFeedforward);
     }
 }
+*/

@@ -6,10 +6,12 @@ import frc.robot.subsystems.ShooterSubsystem;
 
 public class TurnOn extends Command{
     public TurnOn(LoaderSubsystem loaderSubsystem){
+        System.out.println("on");
         loaderSubsystem.runLoader();
     }
     
     public TurnOn(ShooterSubsystem shooterSubsystem){
+        System.out.println("on");
         shooterSubsystem.runShooter();
     }
 

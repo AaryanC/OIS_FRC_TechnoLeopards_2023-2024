@@ -20,8 +20,8 @@ public final class Constants {
   public static final int upperShooterMotorDeviceId = 9;
 
   //LoaderSubsystem
-  public static final int lowerLoaderMotorDeviceId = 22;
-  public static final int upperLoaderMotorDeviceId = 19;
+  public static final int lowerLoaderMotorDeviceId = 20;
+  public static final int upperLoaderMotorDeviceId = 23;
 
   //DriveSubsystem
   public static final int driveSubsystemFrontLeftTurnDeviceId = 1;

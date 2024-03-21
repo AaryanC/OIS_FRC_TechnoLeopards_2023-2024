@@ -8,7 +8,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.subsystems.DriveSubsystem;
+//import frc.robot.subsystems.DriveSubsystem;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -86,12 +87,27 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    DriveSubsystem driveSubsystem = m_robotContainer.m_driveSubsystem;
+    //DriveSubsystem driveSubsystem = m_robotContainer.m_driveSubsystem;
     Joystick joystick = m_robotContainer.joystick;
-    driveSubsystem.drive(joystick.getX(), joystick.getY(), joystick.getRawAxis(3));
+    //driveSubsystem.drive(joystick.getX(), joystick.getY(), joystick.getRawAxis(3));
     System.out.println(joystick.getX() + " " + joystick.getY() + " " + joystick.getZ());
+
+    if(new JoystickButton(joystick, 1).getAsBoolean()){
+      m_robotContainer.m_ShooterSubsystem.runShooter();
+    } else{
+      m_robotContainer.m_ShooterSubsystem.stopShooter();
+    }
+
+    if(new JoystickButton(joystick, 2).getAsBoolean()){
+      m_robotContainer.m_LoaderSubsystem.runLoader();
+    }else{
+      m_robotContainer.m_LoaderSubsystem.stopLoader();
+    }
     
-    driveSubsystem.updateMaxSpeed(joystick.getThrottle());
+    System.out.println(new JoystickButton(joystick, 1).getAsBoolean());
+    System.out.println(new JoystickButton(joystick, 2).getAsBoolean());
+
+    //driveSubsystem.updateMaxSpeed(joystick.getThrottle());
   }
 
   @Override

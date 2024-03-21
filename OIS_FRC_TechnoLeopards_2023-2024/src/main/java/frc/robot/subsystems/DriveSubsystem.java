@@ -1,22 +1,15 @@
-package frc.robot.subsystems;
+/*package frc.robot.subsystems;
 
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
 
 public class DriveSubsystem extends SubsystemBase{
     private static final double kTrueMaxSpeed = 3.0; //3 m/s max speed, also set based on throttle
     private double kMaxSpeed = kTrueMaxSpeed;
     private static final double kMaxAngularSpeed = Math.PI; //180 degrees/s max speed
-
-    Encoder frontLeftDriveEncoder = SwerveModule.createSharedEncoderConfiguration(Constants.driveSubsystemFrontLeftEncoderChannelA, Constants.driveSubsystemFrontLeftEncoderChannelB);
-    Encoder frontRightDriveEncoder = SwerveModule.createSharedEncoderConfiguration(Constants.driveSubsystemFrontRightEncoderChannelA, Constants.driveSubsystemFrontRightEncoderChannelB);
-    Encoder backLeftDriveEncoder = SwerveModule.createSharedEncoderConfiguration(Constants.driveSubsystemBackLeftEncoderChannelA, Constants.driveSubsystemBackLeftEncoderChannelB);
-    Encoder backRightDriveEncoder = SwerveModule.createSharedEncoderConfiguration(Constants.driveSubsystemBackRightEncoderChannelA, Constants.driveSubsystemBackRightEncoderChannelB);
 
     private final double translationDistance = 0.381;//Enter translation distance here
     private final Translation2d m_frontLeftLocation = new Translation2d(translationDistance, translationDistance);
@@ -24,37 +17,10 @@ public class DriveSubsystem extends SubsystemBase{
     private final Translation2d m_backLeftLocation = new Translation2d(-translationDistance, translationDistance);
     private final Translation2d m_backRightLocation = new Translation2d(-translationDistance, -translationDistance);
     
-    private final SwerveModule m_frontLeft = new SwerveModule(
-        Constants.driveSubsystemFrontLeftTurnDeviceId, 
-        Constants.driveSubsystemFrontLeftDriveDeviceId, 
-        0, 
-        0, 
-        0, 
-        0);
-
-    private final SwerveModule m_frontRight = new SwerveModule(
-        Constants.driveSubsystemFrontRightTurnDeviceId, 
-    Constants.driveSubsystemFrontRightDriveDeviceId, 
-    0, 
-    0, 
-    0, 
-    0);
-    
-    private final SwerveModule m_backLeft = new SwerveModule(
-        Constants.driveSubsystemBackLeftTurnDeviceId, 
-    Constants.driveSubsystemBackLeftDriveDeviceId, 
-    0, 
-    0, 
-    0, 
-    0);
-    
-    private final SwerveModule m_backRight = new SwerveModule(
-        Constants.driveSubsystemBackRightTurnDeviceId, 
-        Constants.driveSubsystemBackRightDriveDeviceId, 
-        0, 
-        0, 
-        0, 
-        0);
+    private final SwerveModule m_frontLeft = new SwerveModule(1, 2, 1, 5, 9, 13);
+    private final SwerveModule m_frontRight = new SwerveModule(3, 4, 2, 6, 10, 14);
+    private final SwerveModule m_backLeft = new SwerveModule(5, 6, 3, 7, 11, 15);
+    private final SwerveModule m_backRight = new SwerveModule(7, 8, 4, 8, 12, 16);
 
     private final SwerveDriveKinematics m_kinematics = new SwerveDriveKinematics(m_frontLeftLocation, m_frontRightLocation, m_backLeftLocation, m_backRightLocation);
     
@@ -82,4 +48,4 @@ public class DriveSubsystem extends SubsystemBase{
         m_backRight.setDesiredState(swerveModuleStates[3]);
     }
 }
- 
+ */
