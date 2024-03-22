@@ -5,7 +5,7 @@ import com.revrobotics.CANSparkMax;
 import frc.robot.Constants;
 
 public class ShooterSubsystem {
-    private static final double maxSpeed = 0.5;
+    private static final double maxSpeed = 1;
     private static double currSpeed = maxSpeed;
     private final CANSparkMax lowerShooterMotor;
     private final CANSparkMax upperShooterMotor;

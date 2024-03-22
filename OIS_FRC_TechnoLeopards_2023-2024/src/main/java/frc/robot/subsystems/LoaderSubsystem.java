@@ -6,7 +6,7 @@ import com.revrobotics.CANSparkMax;
 import frc.robot.Constants;
 
 public class LoaderSubsystem {
-    private static final double maxSpeed = 0.6;
+    private static final double maxSpeed = 0.1;
     private static double currSpeed = maxSpeed;
     private final CANSparkMax lowerLoaderMotor;
     private final CANSparkMax upperLoaderMotor;
