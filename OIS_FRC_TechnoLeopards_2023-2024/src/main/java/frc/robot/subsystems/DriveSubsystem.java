@@ -17,10 +17,34 @@ public class DriveSubsystem extends SubsystemBase{
     private final Translation2d m_backLeftLocation = new Translation2d(-translationDistance, translationDistance);
     private final Translation2d m_backRightLocation = new Translation2d(-translationDistance, -translationDistance);
     
-    private final SwerveModule m_frontLeft = new SwerveModule(1, 2, 1, 5, 9, 13);
-    private final SwerveModule m_frontRight = new SwerveModule(3, 4, 2, 6, 10, 14);
-    private final SwerveModule m_backLeft = new SwerveModule(5, 6, 3, 7, 11, 15);
-    private final SwerveModule m_backRight = new SwerveModule(7, 8, 4, 8, 12, 16);
+    private final SwerveModule m_frontLeft = new SwerveModule(
+        1, 
+        2, 
+        1, 
+        5, 
+        9, 
+        13);
+    private final SwerveModule m_frontRight = new SwerveModule(
+        4, 
+        3, 
+        2, 
+        6, 
+        10, 
+        14);
+    private final SwerveModule m_backLeft = new SwerveModule(
+        5, 
+        6, 
+        3, 
+        7, 
+        11, 
+        15);
+    private final SwerveModule m_backRight = new SwerveModule(
+        8, 
+        7, 
+        4, 
+        8, 
+        12, 
+        16);
 
     private final SwerveDriveKinematics m_kinematics = new SwerveDriveKinematics(m_frontLeftLocation, m_frontRightLocation, m_backLeftLocation, m_backRightLocation);
     

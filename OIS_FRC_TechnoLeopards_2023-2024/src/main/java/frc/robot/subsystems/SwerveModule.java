@@ -24,8 +24,8 @@ public class SwerveModule {
     private final CANSparkMax m_turningMotor;
     private final Encoder m_driveEncoder;
     private final Encoder m_turningEncoder;
-    private final PIDController m_drivePIDController = new PIDController(1, 0, 0);//PID COntroller BS needs to be fucking sorted
-    private final ProfiledPIDController m_turningPIDController = new ProfiledPIDController(1, 0, 0, new TrapezoidProfile.Constraints(kModuleMaxAngularVelocity, kModuleMaxAngularAcceleration));//PID COntroller BS needs to be fucking sorted
+    private final PIDController m_drivePIDController = new PIDController(2, 0, 0.1);//PID COntroller BS needs to be fucking sorted
+    private final ProfiledPIDController m_turningPIDController = new ProfiledPIDController(2, 0, 0.1, new TrapezoidProfile.Constraints(kModuleMaxAngularVelocity, kModuleMaxAngularAcceleration));//PID COntroller BS needs to be fucking sorted
     private final SimpleMotorFeedforward m_driveFeedforward = new SimpleMotorFeedforward(1, 3);
     private final SimpleMotorFeedforward m_turnFeedforward = new SimpleMotorFeedforward(1, 0.5);
 
@@ -41,7 +41,7 @@ public class SwerveModule {
         m_turningEncoder = new Encoder(turningEncoderChannelA, turningEncoderChannelB);
         m_driveEncoder.setDistancePerPulse(2 * Math.PI * kWheelRadius / kEncoderResolutionDrive);
         m_turningEncoder.setDistancePerPulse(2 * Math.PI / kEncoderResolutionTurn);
-        m_turningPIDController.enableContinuousInput(-Math.PI, Math.PI);
+        //m_turningPIDController.enableContinuousInput(-Math.PI, Math.PI);
     }
 
     public static Encoder createSharedEncoderConfiguration(int channelA, int channelB) {
