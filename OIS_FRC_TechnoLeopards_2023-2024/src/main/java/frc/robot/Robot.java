@@ -97,17 +97,16 @@ public class Robot extends TimedRobot {
     double y = joystick.getY();
     double z = joystick.getZ();
     double slide = ((-joystick.getThrottle()) + 1)/2;
-    
-    x = slide * x;
-    y = slide * y;
-    z = slide * z;
 
-    x = DriveSubsystem.getMaxSpeed() * x;
-    y = DriveSubsystem.getMaxSpeed() * y;
-    z = DriveSubsystem.getMaxSpeed() * z;
+    SmartDashboard.putBoolean("Shooter Active", new JoystickButton(joystick, 1).getAsBoolean());
+    SmartDashboard.putBoolean("Loader Active", new JoystickButton(joystick, 2).getAsBoolean());
+    SmartDashboard.putNumber("X", x);
+    SmartDashboard.putNumber("Y", y);
+    SmartDashboard.putNumber("Z", z);
+    SmartDashboard.putNumber("Speed Control", slide);
 
     if(Math.abs(x) > Constants.robotDeadZone && Math.abs(y) > Constants.robotDeadZone && Math.abs(z) > Constants.robotDeadZone){
-      driveSubsystem.drive(x, y, z, true, getPeriod());
+      driveSubsystem.drive(x * DriveSubsystem.getMaxSpeed() * slide, y * DriveSubsystem.getMaxSpeed() * slide, z * DriveSubsystem.getMaxSpeed() * slide, true, getPeriod());
     }
 
     if(new JoystickButton(joystick, 1).getAsBoolean()){
@@ -121,17 +120,6 @@ public class Robot extends TimedRobot {
     }else{
       m_robotContainer.m_LoaderSubsystem.stopLoader();
     }
-
-    //Updating SmartDashboard
-    SmartDashboard.putBoolean("Shooter Active", new JoystickButton(joystick, 1).getAsBoolean());
-    SmartDashboard.putBoolean("Loader Active", new JoystickButton(joystick, 2).getAsBoolean());
-    
-    SmartDashboard.putNumber("X", x);
-    SmartDashboard.putNumber("Y", y);
-    SmartDashboard.putNumber("Z", z);
-    SmartDashboard.putNumber("Speed Control", slide);
-
-    System.out.println(x + " " + y + " " + z + " " + slide);
   }
 
   @Override
