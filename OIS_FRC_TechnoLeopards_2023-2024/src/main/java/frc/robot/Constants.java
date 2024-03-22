@@ -26,22 +26,30 @@ public final class Constants {
   //DriveSubsystem
   public static final int driveSubsystemFrontLeftTurnDeviceId = 1;
   public static final int driveSubsystemFrontLeftDriveDeviceId = 2;
-  public static final int driveSubsystemFrontRightTurnDeviceId = 4;
-  public static final int driveSubsystemFrontRightDriveDeviceId = 3;
+  public static final int driveSubsystemFrontRightTurnDeviceId = 3;
+  public static final int driveSubsystemFrontRightDriveDeviceId = 4;
   public static final int driveSubsystemBackLeftTurnDeviceId = 5;
   public static final int driveSubsystemBackLeftDriveDeviceId = 6;
-  public static final int driveSubsystemBackRightTurnDeviceId = 8;
-  public static final int driveSubsystemBackRightDriveDeviceId = 7;
+  public static final int driveSubsystemBackRightTurnDeviceId = 7;
+  public static final int driveSubsystemBackRightDriveDeviceId = 8;
 
-  public static final int driveSubsystemFrontLeftEncoderChannelA = 0;
-  public static final int driveSubsystemFrontLeftEncoderChannelB = 0;
-  public static final int driveSubsystemFrontRightEncoderChannelA = 0;
-  public static final int driveSubsystemFrontRightEncoderChannelB = 0;
-  public static final int driveSubsystemBackLeftEncoderChannelA = 0;
-  public static final int driveSubsystemBackLeftEncoderChannelB = 0;
-  public static final int driveSubsystemBackRightEncoderChannelA = 0;
-  public static final int driveSubsystemBackRightEncoderChannelB = 0;
+  public static final int driveSubsystemFrontLeftEncoderChannelA = 1;
+  public static final int driveSubsystemFrontLeftEncoderChannelB = 2;
+  public static final int driveSubsystemFrontRightEncoderChannelA = 3;
+  public static final int driveSubsystemFrontRightEncoderChannelB = 4;
+  public static final int driveSubsystemBackLeftEncoderChannelA = 5;
+  public static final int driveSubsystemBackLeftEncoderChannelB = 6;
+  public static final int driveSubsystemBackRightEncoderChannelA = 7;
+  public static final int driveSubsystemBackRightEncoderChannelB = 8;
+
+  public static final double kTrueMaxSpeed = 3;
 
   //Robot
   public static final double robotDeadZone = 0.1;
+
+  //SwerveModule
+  public static final double kWheelRadiusSwerve = 0.0504;
+  public static final int encoderResolution = 4096;
+  public static final double shooterMaxSpeed = 0.8;
+  public static final double loaderMaxSpeed = 0.4;
 }

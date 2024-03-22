@@ -6,8 +6,6 @@ import com.revrobotics.CANSparkMax;
 import frc.robot.Constants;
 
 public class LoaderSubsystem {
-    private static final double maxSpeed = 0.4;
-    private static double currSpeed = maxSpeed;
     private final CANSparkMax lowerLoaderMotor;
     private final CANSparkMax upperLoaderMotor;
 
@@ -16,21 +14,9 @@ public class LoaderSubsystem {
         upperLoaderMotor = new CANSparkMax(Constants.upperLoaderMotorDeviceId, CANSparkLowLevel.MotorType.kBrushless);
     }
 
-    public static void updateSpeed(double speed){
-        if(Math.abs(speed) <= maxSpeed){
-            currSpeed = speed; 
-        } else{
-            if (speed > 0){
-                currSpeed = maxSpeed;
-            } else{
-                currSpeed = -maxSpeed;
-            }
-        }
-    }
-
     public void runLoader(){
-        lowerLoaderMotor.set(currSpeed);
-        upperLoaderMotor.set(-currSpeed);
+        lowerLoaderMotor.set(Constants.loaderMaxSpeed);
+        upperLoaderMotor.set(Constants.loaderMaxSpeed);
     }
 
     public void stopLoader(){
