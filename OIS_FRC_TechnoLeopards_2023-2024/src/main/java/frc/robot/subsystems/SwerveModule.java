@@ -77,8 +77,4 @@ public class SwerveModule {
         m_driveMotor.setVoltage(driveOutput + driveFeedforward);
         m_turningMotor.setVoltage(turnOutput + turnFeedforward);
     }
-
-    public void reset(){
-        
-    }
 }
