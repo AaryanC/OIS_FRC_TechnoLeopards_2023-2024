@@ -79,6 +79,6 @@ public class SwerveModule {
     }
 
     public void reset(){
-        double changeRequired =  1 - (m_turningMotor.getEncoder().getPosition() % 1);
+        
     }
 }
