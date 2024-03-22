@@ -47,4 +47,8 @@ public class DriveSubsystem extends SubsystemBase{
         m_backLeft.setDesiredState(swerveModuleStates[2]);
         m_backRight.setDesiredState(swerveModuleStates[3]);
     }
+
+    public void setAtZero(){
+        
+    }
 }
