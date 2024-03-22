@@ -3,8 +3,9 @@ package frc.robot.subsystems;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
-import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+import edu.wpi.first.wpilibj.AnalogGyro;
 
 public class DriveSubsystem extends SubsystemBase{
     private static final double kTrueMaxSpeed = 3.0; //3 m/s max speed, also set based on throttle
@@ -17,6 +18,8 @@ public class DriveSubsystem extends SubsystemBase{
     private final Translation2d m_backLeftLocation = new Translation2d(-translationDistance, translationDistance);
     private final Translation2d m_backRightLocation = new Translation2d(-translationDistance, -translationDistance);
     
+    private final AnalogGyro m_gyro = new AnalogGyro(0);
+
     private final SwerveModule m_frontLeft = new SwerveModule(
         1, 
         2, 
@@ -49,7 +52,7 @@ public class DriveSubsystem extends SubsystemBase{
     private final SwerveDriveKinematics m_kinematics = new SwerveDriveKinematics(m_frontLeftLocation, m_frontRightLocation, m_backLeftLocation, m_backRightLocation);
     
     public DriveSubsystem(){
-        
+        m_gyro.reset();
     }
 
     public static double getMaxSpeed(){
@@ -62,8 +65,15 @@ public class DriveSubsystem extends SubsystemBase{
         }
     }
 
-    public void drive(double xSpeed, double ySpeed, double rot){
-        SwerveModuleState[] swerveModuleStates = m_kinematics.toSwerveModuleStates(new ChassisSpeeds(xSpeed, ySpeed, rot));
+    public void drive(double xSpeed, double ySpeed, double rot, boolean fieldRelative, double periodSeconds){
+        var swerveModuleStates =
+        m_kinematics.toSwerveModuleStates(
+            ChassisSpeeds.discretize(
+                fieldRelative
+                    ? ChassisSpeeds.fromFieldRelativeSpeeds(
+                        xSpeed, ySpeed, rot, m_gyro.getRotation2d())
+                    : new ChassisSpeeds(xSpeed, ySpeed, rot),
+                periodSeconds));
         
         SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, kMaxSpeed);
         m_frontLeft.setDesiredState(swerveModuleStates[0]);

@@ -102,8 +102,12 @@ public class Robot extends TimedRobot {
     y = slide * y;
     z = slide * z;
 
+    x = DriveSubsystem.getMaxSpeed() * x;
+    y = DriveSubsystem.getMaxSpeed() * y;
+    z = DriveSubsystem.getMaxSpeed() * z;
+
     if(Math.abs(x) > Constants.robotDeadZone && Math.abs(y) > Constants.robotDeadZone && Math.abs(z) > Constants.robotDeadZone){
-      driveSubsystem.drive(x, y, z);
+      driveSubsystem.drive(x, y, z, true, getPeriod());
     }
 
     if(new JoystickButton(joystick, 1).getAsBoolean()){

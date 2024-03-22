@@ -41,7 +41,7 @@ public class SwerveModule {
         m_turningEncoder = new Encoder(turningEncoderChannelA, turningEncoderChannelB);
         m_driveEncoder.setDistancePerPulse(2 * Math.PI * kWheelRadius / kEncoderResolutionDrive);
         m_turningEncoder.setDistancePerPulse(2 * Math.PI / kEncoderResolutionTurn);
-        //m_turningPIDController.enableContinuousInput(-Math.PI, Math.PI);
+        m_turningPIDController.enableContinuousInput(-Math.PI, Math.PI);
     }
 
     public static Encoder createSharedEncoderConfiguration(int channelA, int channelB) {
