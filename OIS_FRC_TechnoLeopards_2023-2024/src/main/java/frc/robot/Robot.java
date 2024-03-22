@@ -21,8 +21,8 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
-  DriveSubsystem driveSubsystem = m_robotContainer.m_driveSubsystem;
-  Joystick joystick = m_robotContainer.joystick;
+  private DriveSubsystem driveSubsystem;
+  private Joystick joystick;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -84,6 +84,9 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    
+    joystick = m_robotContainer.joystick;
+    driveSubsystem = m_robotContainer.m_driveSubsystem;
   }
 
   /** This function is called periodically during operator control. */
@@ -94,11 +97,13 @@ public class Robot extends TimedRobot {
     double y = joystick.getY();
     double z = joystick.getZ();
     double slide = ((-joystick.getThrottle()) + 1)/2;
-
-    driveSubsystem.updateMaxSpeed(3 * slide);
+    
+    x = slide * x;
+    y = slide * y;
+    z = slide * z;
 
     if(Math.abs(x) > Constants.robotDeadZone && Math.abs(y) > Constants.robotDeadZone && Math.abs(z) > Constants.robotDeadZone){
-      driveSubsystem.drive(joystick.getX(), joystick.getY(), joystick.getRawAxis(3));
+      driveSubsystem.drive(x, y, z);
     }
 
     if(new JoystickButton(joystick, 1).getAsBoolean()){
@@ -116,7 +121,12 @@ public class Robot extends TimedRobot {
     //Updating SmartDashboard
     SmartDashboard.putBoolean("Shooter Active", new JoystickButton(joystick, 1).getAsBoolean());
     SmartDashboard.putBoolean("Loader Active", new JoystickButton(joystick, 2).getAsBoolean());
-    SmartDashboard.putNumberArray("Joystick Values", new Double[]{x, y, z, slide});
+    
+    SmartDashboard.putNumber("X", x);
+    SmartDashboard.putNumber("Y", y);
+    SmartDashboard.putNumber("Z", z);
+    SmartDashboard.putNumber("Speed Control", slide);
+
     System.out.println(x + " " + y + " " + z + " " + slide);
   }
 
