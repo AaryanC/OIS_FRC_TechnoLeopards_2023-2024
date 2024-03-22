@@ -13,7 +13,7 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-  public static final int kDriverControllerPort = 0;
+  public static final int kDriverControllerPort = 0;//Not in use?
 
   //ShooterSubsystem
   public static final int lowerShooterMotorDeviceId = 10;
@@ -41,5 +41,7 @@ public final class Constants {
   public static final int driveSubsystemBackLeftEncoderChannelB = 0;
   public static final int driveSubsystemBackRightEncoderChannelA = 0;
   public static final int driveSubsystemBackRightEncoderChannelB = 0;
-  
+
+  //Robot
+  public static final double robotDeadZone = 0.1;
 }

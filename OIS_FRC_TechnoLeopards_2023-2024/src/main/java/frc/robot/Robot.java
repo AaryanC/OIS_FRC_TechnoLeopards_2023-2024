@@ -6,6 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.DriveSubsystem;
@@ -89,8 +90,14 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     DriveSubsystem driveSubsystem = m_robotContainer.m_driveSubsystem;
     Joystick joystick = m_robotContainer.joystick;
-    driveSubsystem.drive(joystick.getX(), joystick.getY(), joystick.getRawAxis(3));
-    System.out.println(joystick.getX() + " " + joystick.getY() + " " + joystick.getZ());
+
+    double x = joystick.getX();
+    double y = joystick.getY();
+    double z = joystick.getRawAxis(3);
+
+    if(Math.abs(x) > Constants.robotDeadZone && Math.abs(y) > Constants.robotDeadZone && Math.abs(z) > Constants.robotDeadZone){
+      driveSubsystem.drive(joystick.getX(), joystick.getY(), joystick.getRawAxis(3));
+    }
 
     if(new JoystickButton(joystick, 1).getAsBoolean()){
       m_robotContainer.m_ShooterSubsystem.runShooter();
@@ -103,11 +110,11 @@ public class Robot extends TimedRobot {
     }else{
       m_robotContainer.m_LoaderSubsystem.stopLoader();
     }
-    
-    System.out.println(new JoystickButton(joystick, 1).getAsBoolean());
-    System.out.println(new JoystickButton(joystick, 2).getAsBoolean());
 
-    driveSubsystem.updateMaxSpeed(joystick.getThrottle());
+    //Updating SmartDashboard
+    SmartDashboard.putBoolean("Shooter Active", new JoystickButton(joystick, 1).getAsBoolean());
+    SmartDashboard.putBoolean("Loader Active", new JoystickButton(joystick, 2).getAsBoolean());
+    SmartDashboard.putNumberArray("Joystick Values", new Double[]{x, y, z});
   }
 
   @Override
