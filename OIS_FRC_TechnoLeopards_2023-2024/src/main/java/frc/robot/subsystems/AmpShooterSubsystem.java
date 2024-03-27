@@ -1,27 +1,20 @@
-package frc.robot.subsystems;
+/*package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkLowLevel;
 import com.revrobotics.CANSparkMax;
 import frc.robot.Constants;
 
-public class ShooterSubsystem {
-    private final CANSparkMax lowerShooterMotor;
-    private final CANSparkMax upperShooterMotor;
+public class AmpShooterSubsystem {
+    final CANSparkMax lowerShooterMotor;
+    final CANSparkMax  upperShooterMotor;
 
-    public ShooterSubsystem(){
+    /*public AmpShooterSubsystem(
+      
+    ){
         lowerShooterMotor = new CANSparkMax(Constants.lowerShooterMotorDeviceId, CANSparkLowLevel.MotorType.kBrushless);
         upperShooterMotor = new CANSparkMax(Constants.upperShooterMotorDeviceId, CANSparkLowLevel.MotorType.kBrushless);
-    }
+    
 
-    public void runShooter(){
-        lowerShooterMotor.set(-Constants.shooterMaxSpeed);
-        upperShooterMotor.set(-Constants.shooterMaxSpeed);
-    }
-
-    public void stopShooter(){
-        lowerShooterMotor.stopMotor();
-        upperShooterMotor.stopMotor();
-    }
     public void runAmpShooter(){
         lowerShooterMotor.set(-Constants.AmpshooterMaxSpeed);
         upperShooterMotor.set(-Constants.AmpshooterMaxSpeed);
@@ -31,4 +24,4 @@ public class ShooterSubsystem {
         lowerShooterMotor.stopMotor();
         upperShooterMotor.stopMotor();
     }
-}
+}*/

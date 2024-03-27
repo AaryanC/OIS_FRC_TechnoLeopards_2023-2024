@@ -93,20 +93,21 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
 
-    double x = joystick.getX();
-    double y = joystick.getY();
-    double z = joystick.getZ();
+    double x = joystick.getY();
+    double y = joystick.getZ();
+    double z = joystick.getX();
     double slide = ((-joystick.getThrottle()) + 1)/2;
 
     SmartDashboard.putBoolean("Shooter Active", new JoystickButton(joystick, 1).getAsBoolean());
     SmartDashboard.putBoolean("Loader Active", new JoystickButton(joystick, 2).getAsBoolean());
+    SmartDashboard.putBoolean("Amp Active", new JoystickButton(joystick, 3).getAsBoolean());
     SmartDashboard.putNumber("X", x);
     SmartDashboard.putNumber("Y", y);
     SmartDashboard.putNumber("Z", z);
     SmartDashboard.putNumber("Speed Control", slide);
 
     if(Math.abs(x) > Constants.robotDeadZone && Math.abs(y) > Constants.robotDeadZone && Math.abs(z) > Constants.robotDeadZone){
-      driveSubsystem.drive(x * DriveSubsystem.getMaxSpeed() * slide, y * DriveSubsystem.getMaxSpeed() * slide, z * DriveSubsystem.getMaxSpeed() * slide, true, getPeriod());
+      driveSubsystem.drive(x * 0.5* DriveSubsystem.getMaxSpeed() * slide, y * 0.5* DriveSubsystem.getMaxSpeed() * slide, z * 0.5* DriveSubsystem.getMaxSpeed() * slide, true, getPeriod());
     }
 
     if(new JoystickButton(joystick, 1).getAsBoolean()){
@@ -120,6 +121,12 @@ public class Robot extends TimedRobot {
     }else{
       m_robotContainer.m_LoaderSubsystem.stopLoader();
     }
+
+     /*if(new JoystickButton(joystick, 3).getAsBoolean()){
+      m_robotContainer.m_ShooterSubsystem.runAmpShooter();
+    } else{
+      m_robotContainer.m_ShooterSubsystem.stopAmpShooter();
+    }*/
   }
 
   @Override
@@ -140,3 +147,5 @@ public class Robot extends TimedRobot {
   @Override
   public void simulationPeriodic() {}
 }
+
+

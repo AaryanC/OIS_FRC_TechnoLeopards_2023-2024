@@ -18,12 +18,15 @@ public final class Constants {
   //ShooterSubsystem
   public static final int lowerShooterMotorDeviceId = 10;
   public static final int upperShooterMotorDeviceId = 9;
-  public static final double shooterMaxSpeed = 0.8;
+  public static final double shooterMaxSpeed = 0.9;
   public static final double loaderMaxSpeed = 0.4;
+  public static final double loader2MaxSpeed = 0.5;
+  public static final double AmpshooterMaxSpeed = 0.15;
+
 
   //LoaderSubsystem
-  public static final int lowerLoaderMotorDeviceId = 20;
-  public static final int upperLoaderMotorDeviceId = 23;
+  public static final int lowerLoaderMotorDeviceId = 23;
+  public static final int upperLoaderMotorDeviceId = 20;
 
   //DriveSubsystem
   public static final int driveSubsystemFrontLeftTurnDeviceId = 1;
@@ -44,7 +47,7 @@ public final class Constants {
   public static final int driveSubsystemBackRightEncoderChannelA = 7;//Encoder Id 4
   public static final int driveSubsystemBackRightEncoderChannelB = 8;//Encoder Id 4
 
-  public static final double kTrueMaxSpeed = 3;
+  public static final double kTrueMaxSpeed = 0.8;
 
 
   //Robot

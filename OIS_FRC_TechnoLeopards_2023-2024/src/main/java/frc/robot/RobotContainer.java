@@ -6,6 +6,7 @@ package frc.robot;
 
 import frc.robot.commands.TurnOff;
 import frc.robot.commands.TurnOn;
+//import frc.robot.subsystems.AmpShooterSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.LoaderSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -25,10 +26,12 @@ public class RobotContainer {
   final DriveSubsystem m_driveSubsystem = new DriveSubsystem();
   final LoaderSubsystem m_LoaderSubsystem = new LoaderSubsystem();
   final ShooterSubsystem m_ShooterSubsystem = new ShooterSubsystem();
+  //final AmpShooterSubsystem m_AmpShooterSubsystem = new AmpShooterSubsystem();
   final Joystick joystick = new Joystick(Constants.kDriverControllerPort);
 
   private final JoystickButton button1 = new JoystickButton(joystick, 1);
   private final JoystickButton button2 = new JoystickButton(joystick, 2);
+  private final JoystickButton button3 = new JoystickButton(joystick, 3);
   //private final JoystickButton button3 = new JoystickButton(joystick, 3);
   //private final JoystickButton button4 = new JoystickButton(joystick, 4);
   //private final JoystickButton button5 = new JoystickButton(joystick, 5);
@@ -61,5 +64,9 @@ public class RobotContainer {
 
     button2.onTrue(new TurnOn(m_LoaderSubsystem));
     button2.onFalse(new TurnOff(m_LoaderSubsystem));
+
+    button3.onTrue(new TurnOn(m_ShooterSubsystem));
+    button3.onFalse(new TurnOff(m_ShooterSubsystem));
+
   }
 }

@@ -16,10 +16,11 @@ public class SwerveModule {
     private final CANSparkMax m_driveMotor;
     private final CANSparkMax m_turningMotor;
     private final Encoder m_turningEncoder;
-    private final ProfiledPIDController m_turningPIDController = new ProfiledPIDController(2, 0, 0.1, new TrapezoidProfile.Constraints(DriveSubsystem.getMaxSpeed(), 2 * Math.PI));
-    private final SimpleMotorFeedforward m_driveFeedforward = new SimpleMotorFeedforward(1, 3);
-    private final SimpleMotorFeedforward m_turnFeedforward = new SimpleMotorFeedforward(1, 0.5);
+    private final ProfiledPIDController m_turningPIDController = new ProfiledPIDController(0, 0, 0, new TrapezoidProfile.Constraints(DriveSubsystem.getMaxSpeed(), 2 * Math.PI));
+    private final SimpleMotorFeedforward m_driveFeedforward = new SimpleMotorFeedforward(0.5, 0);
+    private final SimpleMotorFeedforward m_turnFeedforward = new SimpleMotorFeedforward(0.5, 0);
 
+   
     public SwerveModule(int turningDeviceId,
                         int driveDeviceId, 
                         int turningEncoderChannelA, 

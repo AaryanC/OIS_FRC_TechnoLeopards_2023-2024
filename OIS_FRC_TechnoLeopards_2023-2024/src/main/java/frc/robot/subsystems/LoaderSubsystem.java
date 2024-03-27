@@ -15,8 +15,8 @@ public class LoaderSubsystem {
     }
 
     public void runLoader(){
-        lowerLoaderMotor.set(Constants.loaderMaxSpeed);
-        upperLoaderMotor.set(Constants.loaderMaxSpeed);
+        lowerLoaderMotor.set(-Constants.loaderMaxSpeed);
+        upperLoaderMotor.set(Constants.loader2MaxSpeed);
     }
 
     public void stopLoader(){
